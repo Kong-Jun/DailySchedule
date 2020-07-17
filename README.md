@@ -57,7 +57,15 @@
 
 做完了 rustlings 中除了 *conversion*、*standard_library_type* 和 *generics* 外的全部练习。*conversion* 和 *standard_library_type* 涉及不少标准库的东西，先放一放，对 Rust 理解更深了在做。*generics* 里有两道题不会做，感觉这两道题挺深的，明天查阅资料解决它们。	
 
+学习了一下单元测试、集成测试的写法。
+
 **TODO**:
 
 1. 把所有和项目相关的 repo 加入到这个 repo 中，方便查看。先把 rustlings 练习的 repo 搬运过来。
 2. 向其他同学一样设置一个可以跳转到每天的记录的表格。
+
+# 7月17日
+1. 安装好了前几天没有安装上的GDB。[](https://github.com/ilg-archived/riscv-none-gcc/releases/tag/v8.2.0-2.2-20190521)上有编译好的 gdb，在我的 Fedora 32 上可以正常运行 CentOS 版 gdb。
+2. 用 Rust 做题。对用 Rust 写链表有了一些理解，主要是灵活运用 Option 和避免所有权问题。
+3. 开始做lab 1,在实验中按需读 *RISC-V Reader*。
+4. 读 LLVM 内联汇编的文档。

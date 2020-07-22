@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `c24` crate."><meta name="keywords" content="rust, rustlang, rust-lang, c24"><title>c24 - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="shortcut icon" href="../favicon.ico"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../c24/index.html'><div class='logo-container'><img src='../rust-logo.png' alt='logo'></div></a><p class='location'>Crate c24</p><div class="sidebar-elems"><a id='all-types' href='all.html'><p>See all c24's items</p></a><div class="block items"><ul><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'c24', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/c24/main.rs.html#1-78' title='goto source code'>[src]</a></span><span class='in-band'>Crate <a class="mod" href=''>c24</a></span></h1><div class='docblock'><h1 id="笨方法学c-练习24" class="section-header"><a href="#笨方法学c-练习24">笨方法学C 练习24</a></h1>
+<div class="example-wrap"><pre class="rust rust-example-rendered">
+#<span class="ident">include</span> <span class="op">&lt;</span><span class="ident">stdio</span>.<span class="ident">h</span><span class="op">&gt;</span>
+#<span class="ident">include</span> <span class="string">&quot;dbg.h&quot;</span>
+#<span class="ident">define</span> <span class="ident">MAX_DATA</span> <span class="number">100</span>
+
+<span class="ident">typedef</span> <span class="kw">enum</span> <span class="ident">EyeColor</span> {
+    <span class="ident">BLUE_EYES</span>, <span class="ident">GREEN_EYES</span>, <span class="ident">BROWN_EYES</span>,
+ 
+    <span class="ident">BLACK_EYES</span>, <span class="ident">OTHER_EYES</span>
+ 
+} <span class="ident">EyeColor</span>;
+ 
+<span class="kw">const</span> <span class="ident">char</span> <span class="kw-2">*</span><span class="ident">EYE_COLOR_NAMES</span>[] <span class="op">=</span> {
+    <span class="string">&quot;Blue&quot;</span>, <span class="string">&quot;Green&quot;</span>, <span class="string">&quot;Brown&quot;</span>, <span class="string">&quot;Black&quot;</span>, <span class="string">&quot;Other&quot;</span>
+};
+ 
+<span class="ident">typedef</span> <span class="kw">struct</span> <span class="ident">Person</span> {
+    <span class="ident">int</span> <span class="ident">age</span>;
+    <span class="ident">char</span> <span class="ident">first_name</span>[<span class="ident">MAX_DATA</span>];
+    <span class="ident">char</span> <span class="ident">last_name</span>[<span class="ident">MAX_DATA</span>];
+    <span class="ident">EyeColor</span> <span class="ident">eyes</span>;
+    <span class="ident">float</span> <span class="ident">income</span>;
+} <span class="ident">Person</span>;
+ 
+<span class="ident">int</span> <span class="ident">main</span>(<span class="ident">int</span> <span class="ident">argc</span>, <span class="ident">char</span> <span class="kw-2">*</span><span class="ident">argv</span>[])
+{
+    <span class="ident">Person</span> <span class="ident">you</span> <span class="op">=</span> {.<span class="ident">age</span> <span class="op">=</span> <span class="number">0</span>};
+    <span class="ident">int</span> <span class="ident">i</span> <span class="op">=</span> <span class="number">0</span>;
+    <span class="ident">char</span> <span class="kw-2">*</span><span class="kw">in</span> <span class="op">=</span> <span class="ident">NULL</span>;
+ 
+    <span class="ident">printf</span>(<span class="string">&quot;What&#39;s your First Name? &quot;</span>);
+    <span class="kw">in</span> <span class="op">=</span> <span class="ident">fgets</span>(<span class="ident">you</span>.<span class="ident">first_name</span>, <span class="ident">MAX_DATA</span><span class="op">-</span><span class="number">1</span>, <span class="ident">stdin</span>);
+    <span class="ident">check</span>(<span class="kw">in</span> <span class="op">!</span><span class="op">=</span> <span class="ident">NULL</span>, <span class="string">&quot;Failed to read first name.&quot;</span>);
+
+    <span class="ident">printf</span>(<span class="string">&quot;What&#39;s your Last Name? &quot;</span>);
+    <span class="kw">in</span> <span class="op">=</span> <span class="ident">fgets</span>(<span class="ident">you</span>.<span class="ident">last_name</span>, <span class="ident">MAX_DATA</span><span class="op">-</span><span class="number">1</span>, <span class="ident">stdin</span>);
+    <span class="ident">check</span>(<span class="kw">in</span> <span class="op">!</span><span class="op">=</span> <span class="ident">NULL</span>, <span class="string">&quot;Failed to read last name.&quot;</span>);
+
+    <span class="ident">printf</span>(<span class="string">&quot;How old are you? &quot;</span>);
+    <span class="ident">int</span> <span class="ident">rc</span> <span class="op">=</span> <span class="ident">fscanf</span>(<span class="ident">stdin</span>, <span class="string">&quot;%d&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">you</span>.<span class="ident">age</span>);
+    <span class="ident">check</span>(<span class="ident">rc</span> <span class="op">&gt;</span> <span class="number">0</span>, <span class="string">&quot;You have to enter a number.&quot;</span>);
+ 
+    <span class="ident">printf</span>(<span class="string">&quot;What color are your eyes:\n&quot;</span>);
+    <span class="kw">for</span>(<span class="ident">i</span> <span class="op">=</span> <span class="number">0</span>; <span class="ident">i</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">OTHER_EYES</span>; <span class="ident">i</span><span class="op">+</span><span class="op">+</span>) {
+        <span class="ident">printf</span>(<span class="string">&quot;%d) %s\n&quot;</span>, <span class="ident">i</span><span class="op">+</span><span class="number">1</span>, <span class="ident">EYE_COLOR_NAMES</span>[<span class="ident">i</span>]);
+    }
+    <span class="ident">printf</span>(<span class="string">&quot;&gt; &quot;</span>);
+    <span class="ident">int</span> <span class="ident">eyes</span> <span class="op">=</span> <span class="op">-</span><span class="number">1</span>;
+    <span class="ident">rc</span> <span class="op">=</span> <span class="ident">fscanf</span>(<span class="ident">stdin</span>, <span class="string">&quot;%d&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">eyes</span>);
+    <span class="ident">check</span>(<span class="ident">rc</span> <span class="op">&gt;</span> <span class="number">0</span>, <span class="string">&quot;You have to enter a number.&quot;</span>);
+ 
+    <span class="ident">you</span>.<span class="ident">eyes</span> <span class="op">=</span> <span class="ident">eyes</span> <span class="op">-</span> <span class="number">1</span>;
+    <span class="ident">check</span>(<span class="ident">you</span>.<span class="ident">eyes</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">OTHER_EYES</span> <span class="kw-2">&amp;</span><span class="op">&amp;</span> <span class="ident">you</span>.<span class="ident">eyes</span> <span class="op">&gt;</span><span class="op">=</span> <span class="number">0</span>, <span class="string">&quot;Do it right, that&#39;s not an option.&quot;</span>);
+ 
+    <span class="ident">printf</span>(<span class="string">&quot;How much do you make an hour? &quot;</span>);
+    <span class="ident">rc</span> <span class="op">=</span> <span class="ident">fscanf</span>(<span class="ident">stdin</span>, <span class="string">&quot;%f&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">you</span>.<span class="ident">income</span>);
+    <span class="ident">check</span>(<span class="ident">rc</span> <span class="op">&gt;</span> <span class="number">0</span>, <span class="string">&quot;Enter a floating point number.&quot;</span>);
+    <span class="ident">printf</span>(<span class="string">&quot;----- RESULTS -----\n&quot;</span>);
+    <span class="ident">printf</span>(<span class="string">&quot;First Name: %s&quot;</span>, <span class="ident">you</span>.<span class="ident">first_name</span>);
+    <span class="ident">printf</span>(<span class="string">&quot;Last Name: %s&quot;</span>, <span class="ident">you</span>.<span class="ident">last_name</span>);
+    <span class="ident">printf</span>(<span class="string">&quot;Age: %d\n&quot;</span>, <span class="ident">you</span>.<span class="ident">age</span>);
+    <span class="ident">printf</span>(<span class="string">&quot;Eyes: %s\n&quot;</span>, <span class="ident">EYE_COLOR_NAMES</span>[<span class="ident">you</span>.<span class="ident">eyes</span>]);
+    <span class="ident">printf</span>(<span class="string">&quot;Income: %f\n&quot;</span>, <span class="ident">you</span>.<span class="ident">income</span>);
+ 
+    <span class="kw">return</span> <span class="number">0</span>;
+ 
+<span class="ident">error</span>:
+ 
+ 
+ 
+    <span class="kw">return</span> <span class="op">-</span><span class="number">1</span>;
+ 
+}</pre></div>
+</div><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table><tr class='module-item'><td><a class="fn" href="fn.main.html" title='c24::main fn'>main</a></td><td class='docblock-short'></td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../";window.currentCrate = "c24";</script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>

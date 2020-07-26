@@ -38,7 +38,7 @@ fn main() {
     println!("add prefix for octal: {:#o}", 0o11111);
 
     // precision
-    println!("Hello {} is {number:.prec$}", "x", prec = 5, number = 0.01);
+    println!("Hello {} is {number:.2}", "x",[number = 0.0001);
 
     // Display trait
     println!("PrintableStruct: {}", PrintableStruct{a: 1, b: String::from("hello world")});
